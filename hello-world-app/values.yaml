@@ -1,9 +1,9 @@
 replicaCount: 1
 
 image:
-  repository: hello-world
+  repository: 047125666935.dkr.ecr.us-east-1.amazonaws.com/default/hello-world
   pullPolicy: IfNotPresent
-  tag: "1"
+  tag: "latest"
 
 service:
   type: NodePort

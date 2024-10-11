@@ -1,0 +1,9 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: jenkins-clusterrole
+rules:
+- apiGroups: ["*"]     # Applies to all API groups
+  resources: ["*"]      # Grants access to all resources
+  verbs: ["*"]          # Allows all operations (get, list, create, delete, etc.)
+
