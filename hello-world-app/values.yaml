@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  repository: 047125666935.dkr.ecr.us-east-1.amazonaws.com/default/hello-world
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: NodePort
+  port: 5000  # Port to expose
+  targetPort: 5000 # this value is the same for both the service TargetPort and the deployments ContainerPort
+
+resources: {}
+
