@@ -1,0 +1,368 @@
+Started by user user
+Obtained Jenkinsfile from git https://github.com/GorillaAshtray/my-app.git
+[Pipeline] Start of Pipeline
+[Pipeline] podTemplate
+[Pipeline] {
+[Pipeline] node
+Created Pod: kubernetes default/hello-world-app-ci-cd-46-d5nm1-pn225-zf108
+Agent hello-world-app-ci-cd-46-d5nm1-pn225-zf108 is provisioned from template hello-world-app-ci-cd_46-d5nm1-pn225
+---
+apiVersion: "v1"
+kind: "Pod"
+metadata:
+  annotations:
+    kubernetes.jenkins.io/last-refresh: "1728742524168"
+    buildUrl: "http://jenkins.default.svc.cluster.local:8080/job/hello-world-app-ci-cd/46/"
+    runUrl: "job/hello-world-app-ci-cd/46/"
+  labels:
+    base-image: "true"
+    jenkins/label: "hello-world-app-ci-cd_46-d5nm1"
+    jenkins/jenkins-jenkins-agent: "true"
+    jenkins/label-digest: "6865efe150c10e9cf0c27eda5a9fa86fca967b73"
+    kubernetes.jenkins.io/controller: "http___jenkins_default_svc_cluster_local_8080x"
+  name: "hello-world-app-ci-cd-46-d5nm1-pn225-zf108"
+  namespace: "default"
+spec:
+  containers:
+  - args:
+    - "9999999"
+    command:
+    - "sleep"
+    image: "halborland321/base-image:1.1"
+    imagePullPolicy: "IfNotPresent"
+    name: "base-image-container"
+    resources: {}
+    securityContext:
+      privileged: true
+    tty: false
+    volumeMounts:
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+    workingDir: "/home/jenkins/agent"
+  - args:
+    - "********"
+    - "hello-world-app-ci-cd-46-d5nm1-pn225-zf108"
+    env:
+    - name: "JENKINS_SECRET"
+      value: "********"
+    - name: "JENKINS_TUNNEL"
+      value: "jenkins-agent.default.svc.cluster.local:50000"
+    - name: "JENKINS_AGENT_NAME"
+      value: "hello-world-app-ci-cd-46-d5nm1-pn225-zf108"
+    - name: "REMOTING_OPTS"
+      value: "-noReconnectAfter 1d"
+    - name: "JENKINS_NAME"
+      value: "hello-world-app-ci-cd-46-d5nm1-pn225-zf108"
+    - name: "JENKINS_AGENT_WORKDIR"
+      value: "/home/jenkins/agent"
+    - name: "JENKINS_URL"
+      value: "http://jenkins.default.svc.cluster.local:8080/"
+    image: "jenkins/inbound-agent:3261.v9c670a_4748a_9-1"
+    imagePullPolicy: "IfNotPresent"
+    name: "jnlp"
+    resources: {}
+    tty: false
+    volumeMounts:
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+    workingDir: "/home/jenkins/agent"
+  hostNetwork: false
+  nodeSelector:
+    kubernetes.io/os: "linux"
+  restartPolicy: "Never"
+  volumes:
+  - emptyDir:
+      medium: ""
+    name: "workspace-volume"
+
+Running on hello-world-app-ci-cd-46-d5nm1-pn225-zf108 in /home/jenkins/agent/workspace/hello-world-app-ci-cd
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-pat
+Cloning the remote Git repository
+Cloning repository https://github.com/GorillaAshtray/my-app.git
+ > git init /home/jenkins/agent/workspace/hello-world-app-ci-cd # timeout=10
+Fetching upstream changes from https://github.com/GorillaAshtray/my-app.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.2'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/GorillaAshtray/my-app.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Checking out Revision 85cd1aa392ed801ccd73f6fd8c8a4b9c0132e90a (refs/remotes/origin/dev)
+Commit message: "WIP"
+ > git config remote.origin.url https://github.com/GorillaAshtray/my-app.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/dev^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 85cd1aa392ed801ccd73f6fd8c8a4b9c0132e90a # timeout=10
+ > git rev-list --no-walk aaa326ca997ec4d4c474a95256eadf95d8bf8a52 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] container
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (setup environment)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ unset DOCKER_HOST
++ docker context use default
+default
+Current context is now "default"
++ dockerd
+time="2024-10-12T14:15:30.275022511Z" level=info msg="Starting up"
+time="2024-10-12T14:15:30.275748820Z" level=warning msg="could not change group /var/run/docker.sock to docker: group docker not found"
+time="2024-10-12T14:15:30.276476774Z" level=info msg="libcontainerd: started new containerd process" pid=48
+time="2024-10-12T14:15:30.276538103Z" level=info msg="parsed scheme: \"unix\"" module=grpc
+time="2024-10-12T14:15:30.276547842Z" level=info msg="scheme \"unix\" not registered, fallback to default scheme" module=grpc
+time="2024-10-12T14:15:30.276574594Z" level=info msg="ccResolverWrapper: sending update to cc: {[{unix:///var/run/docker/containerd/containerd.sock  <nil> 0 <nil>}] <nil> <nil>}" module=grpc
+time="2024-10-12T14:15:30.276582940Z" level=info msg="ClientConn switching balancer to \"pick_first\"" module=grpc
+time="2024-10-12T14:15:30Z" level=warning msg="containerd config version `1` has been deprecated and will be removed in containerd v2.0, please switch to version `2`, see https://github.com/containerd/containerd/blob/main/docs/PLUGINS.md#version-header"
+time="2024-10-12T14:15:30.289922370Z" level=info msg="starting containerd" revision=2806fc1057397dbaeefbea0e4e17bddfbd388f38 version=v1.6.20
+time="2024-10-12T14:15:30.297601872Z" level=info msg="loading plugin \"io.containerd.content.v1.content\"..." type=io.containerd.content.v1
+time="2024-10-12T14:15:30.297680096Z" level=info msg="loading plugin \"io.containerd.snapshotter.v1.aufs\"..." type=io.containerd.snapshotter.v1
+time="2024-10-12T14:15:30.303102324Z" level=info msg="skip loading plugin \"io.containerd.snapshotter.v1.aufs\"..." error="aufs is not supported (modprobe aufs failed: exit status 1 \"ip: can't find device 'aufs'\\nmodprobe: can't change directory to '/lib/modules': No such file or directory\\n\"): skip plugin" type=io.containerd.snapshotter.v1
+time="2024-10-12T14:15:30.303131540Z" level=info msg="loading plugin \"io.containerd.snapshotter.v1.btrfs\"..." type=io.containerd.snapshotter.v1
+time="2024-10-12T14:15:30.303237553Z" level=info msg="skip loading plugin \"io.containerd.snapshotter.v1.btrfs\"..." error="path /var/lib/docker/containerd/daemon/io.containerd.snapshotter.v1.btrfs (ext4) must be a btrfs filesystem to be used with the btrfs snapshotter: skip plugin" type=io.containerd.snapshotter.v1
+time="2024-10-12T14:15:30.303244661Z" level=info msg="loading plugin \"io.containerd.snapshotter.v1.devmapper\"..." type=io.containerd.snapshotter.v1
+time="2024-10-12T14:15:30.303251180Z" level=warning msg="failed to load plugin io.containerd.snapshotter.v1.devmapper" error="devmapper not configured"
+time="2024-10-12T14:15:30.303255615Z" level=info msg="loading plugin \"io.containerd.snapshotter.v1.native\"..." type=io.containerd.snapshotter.v1
+time="2024-10-12T14:15:30.303285119Z" level=info msg="loading plugin \"io.containerd.snapshotter.v1.overlayfs\"..." type=io.containerd.snapshotter.v1
+time="2024-10-12T14:15:30.303418343Z" level=info msg="loading plugin \"io.containerd.snapshotter.v1.zfs\"..." type=io.containerd.snapshotter.v1
+time="2024-10-12T14:15:30.303463117Z" level=info msg="skip loading plugin \"io.containerd.snapshotter.v1.zfs\"..." error="path /var/lib/docker/containerd/daemon/io.containerd.snapshotter.v1.zfs must be a zfs filesystem to be used with the zfs snapshotter: skip plugin" type=io.containerd.snapshotter.v1
+time="2024-10-12T14:15:30.303469121Z" level=info msg="loading plugin \"io.containerd.metadata.v1.bolt\"..." type=io.containerd.metadata.v1
+time="2024-10-12T14:15:30.303488532Z" level=warning msg="could not use snapshotter devmapper in metadata plugin" error="devmapper not configured"
+time="2024-10-12T14:15:30.303494127Z" level=info msg="metadata content store policy set" policy=shared
+time="2024-10-12T14:15:30.307271773Z" level=info msg="loading plugin \"io.containerd.differ.v1.walking\"..." type=io.containerd.differ.v1
+time="2024-10-12T14:15:30.307476869Z" level=info msg="loading plugin \"io.containerd.event.v1.exchange\"..." type=io.containerd.event.v1
+time="2024-10-12T14:15:30.307498699Z" level=info msg="loading plugin \"io.containerd.gc.v1.scheduler\"..." type=io.containerd.gc.v1
+time="2024-10-12T14:15:30.307540333Z" level=info msg="loading plugin \"io.containerd.service.v1.introspection-service\"..." type=io.containerd.service.v1
+time="2024-10-12T14:15:30.307554993Z" level=info msg="loading plugin \"io.containerd.service.v1.containers-service\"..." type=io.containerd.service.v1
+time="2024-10-12T14:15:30.307573546Z" level=info msg="loading plugin \"io.containerd.service.v1.content-service\"..." type=io.containerd.service.v1
+time="2024-10-12T14:15:30.307584467Z" level=info msg="loading plugin \"io.containerd.service.v1.diff-service\"..." type=io.containerd.service.v1
+time="2024-10-12T14:15:30.307596337Z" level=info msg="loading plugin \"io.containerd.service.v1.images-service\"..." type=io.containerd.service.v1
+time="2024-10-12T14:15:30.307608523Z" level=info msg="loading plugin \"io.containerd.service.v1.leases-service\"..." type=io.containerd.service.v1
+time="2024-10-12T14:15:30.307620649Z" level=info msg="loading plugin \"io.containerd.service.v1.namespaces-service\"..." type=io.containerd.service.v1
+time="2024-10-12T14:15:30.307631599Z" level=info msg="loading plugin \"io.containerd.service.v1.snapshots-service\"..." type=io.containerd.service.v1
+time="2024-10-12T14:15:30.307646779Z" level=info msg="loading plugin \"io.containerd.runtime.v1.linux\"..." type=io.containerd.runtime.v1
+time="2024-10-12T14:15:30.307849240Z" level=info msg="loading plugin \"io.containerd.runtime.v2.task\"..." type=io.containerd.runtime.v2
+time="2024-10-12T14:15:30.307954649Z" level=info msg="loading plugin \"io.containerd.monitor.v1.cgroups\"..." type=io.containerd.monitor.v1
+time="2024-10-12T14:15:30.308164671Z" level=info msg="loading plugin \"io.containerd.service.v1.tasks-service\"..." type=io.containerd.service.v1
+time="2024-10-12T14:15:30.308185107Z" level=info msg="loading plugin \"io.containerd.grpc.v1.introspection\"..." type=io.containerd.grpc.v1
+time="2024-10-12T14:15:30.308197777Z" level=info msg="loading plugin \"io.containerd.internal.v1.restart\"..." type=io.containerd.internal.v1
+time="2024-10-12T14:15:30.308241376Z" level=info msg="loading plugin \"io.containerd.grpc.v1.containers\"..." type=io.containerd.grpc.v1
+time="2024-10-12T14:15:30.308252043Z" level=info msg="loading plugin \"io.containerd.grpc.v1.content\"..." type=io.containerd.grpc.v1
+time="2024-10-12T14:15:30.308264225Z" level=info msg="loading plugin \"io.containerd.grpc.v1.diff\"..." type=io.containerd.grpc.v1
+time="2024-10-12T14:15:30.308273740Z" level=info msg="loading plugin \"io.containerd.grpc.v1.events\"..." type=io.containerd.grpc.v1
+time="2024-10-12T14:15:30.308284302Z" level=info msg="loading plugin \"io.containerd.grpc.v1.healthcheck\"..." type=io.containerd.grpc.v1
+time="2024-10-12T14:15:30.308293808Z" level=info msg="loading plugin \"io.containerd.grpc.v1.images\"..." type=io.containerd.grpc.v1
+time="2024-10-12T14:15:30.308302752Z" level=info msg="loading plugin \"io.containerd.grpc.v1.leases\"..." type=io.containerd.grpc.v1
+time="2024-10-12T14:15:30.308313786Z" level=info msg="loading plugin \"io.containerd.grpc.v1.namespaces\"..." type=io.containerd.grpc.v1
+time="2024-10-12T14:15:30.308325011Z" level=info msg="loading plugin \"io.containerd.internal.v1.opt\"..." type=io.containerd.internal.v1
+time="2024-10-12T14:15:30.308512728Z" level=info msg="loading plugin \"io.containerd.grpc.v1.snapshots\"..." type=io.containerd.grpc.v1
+time="2024-10-12T14:15:30.308527807Z" level=info msg="loading plugin \"io.containerd.grpc.v1.tasks\"..." type=io.containerd.grpc.v1
+time="2024-10-12T14:15:30.308537405Z" level=info msg="loading plugin \"io.containerd.grpc.v1.version\"..." type=io.containerd.grpc.v1
+time="2024-10-12T14:15:30.308546809Z" level=info msg="loading plugin \"io.containerd.tracing.processor.v1.otlp\"..." type=io.containerd.tracing.processor.v1
+time="2024-10-12T14:15:30.308561993Z" level=info msg="skip loading plugin \"io.containerd.tracing.processor.v1.otlp\"..." error="no OpenTelemetry endpoint: skip plugin" type=io.containerd.tracing.processor.v1
+time="2024-10-12T14:15:30.308575357Z" level=info msg="loading plugin \"io.containerd.internal.v1.tracing\"..." type=io.containerd.internal.v1
+time="2024-10-12T14:15:30.308589968Z" level=error msg="failed to initialize a tracing processor \"otlp\"" error="no OpenTelemetry endpoint: skip plugin"
+time="2024-10-12T14:15:30.308782515Z" level=info msg=serving... address=/var/run/docker/containerd/containerd-debug.sock
+time="2024-10-12T14:15:30.308835279Z" level=info msg=serving... address=/var/run/docker/containerd/containerd.sock.ttrpc
+time="2024-10-12T14:15:30.308882132Z" level=info msg=serving... address=/var/run/docker/containerd/containerd.sock
+time="2024-10-12T14:15:30.308896393Z" level=info msg="containerd successfully booted in 0.019544s"
+time="2024-10-12T14:15:30.319220463Z" level=info msg="parsed scheme: \"unix\"" module=grpc
+time="2024-10-12T14:15:30.319239261Z" level=info msg="scheme \"unix\" not registered, fallback to default scheme" module=grpc
+time="2024-10-12T14:15:30.319252105Z" level=info msg="ccResolverWrapper: sending update to cc: {[{unix:///var/run/docker/containerd/containerd.sock  <nil> 0 <nil>}] <nil> <nil>}" module=grpc
+time="2024-10-12T14:15:30.319263569Z" level=info msg="ClientConn switching balancer to \"pick_first\"" module=grpc
+time="2024-10-12T14:15:30.320172709Z" level=info msg="parsed scheme: \"unix\"" module=grpc
+time="2024-10-12T14:15:30.320192240Z" level=info msg="scheme \"unix\" not registered, fallback to default scheme" module=grpc
+time="2024-10-12T14:15:30.320208592Z" level=info msg="ccResolverWrapper: sending update to cc: {[{unix:///var/run/docker/containerd/containerd.sock  <nil> 0 <nil>}] <nil> <nil>}" module=grpc
+time="2024-10-12T14:15:30.320218586Z" level=info msg="ClientConn switching balancer to \"pick_first\"" module=grpc
+time="2024-10-12T14:15:30.320980468Z" level=error msg="No zfs dataset found for root" backingFS=extfs root=/var/lib/docker storage-driver=zfs
+time="2024-10-12T14:15:30.332715248Z" level=info msg="Loading containers: start."
+time="2024-10-12T14:15:30.402442730Z" level=info msg="Default bridge (docker0) is assigned with an IP address 172.17.0.0/16. Daemon option --bip can be used to set a preferred IP address"
+time="2024-10-12T14:15:30.428543608Z" level=info msg="Loading containers: done."
+time="2024-10-12T14:15:30.436217112Z" level=info msg="Docker daemon" commit=5d6db84 graphdriver(s)=overlay2 version=20.10.24
+time="2024-10-12T14:15:30.436291446Z" level=info msg="Daemon has completed initialization"
+time="2024-10-12T14:15:30.457807052Z" level=info msg="API listen on /var/run/docker.sock"
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (build)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker build -t hello-world:latest .
+Sending build context to Docker daemon  548.4kB
+Step 1/6 : FROM python:3.9-slim
+3.9-slim: Pulling from library/python
+302e3ee49805: Pulling fs layer
+4c0965d39195: Pulling fs layer
+fdeeec85abba: Pulling fs layer
+62a08b8dd4f5: Pulling fs layer
+62a08b8dd4f5: Waiting
+4c0965d39195: Verifying Checksum
+4c0965d39195: Download complete
+62a08b8dd4f5: Download complete
+fdeeec85abba: Verifying Checksum
+fdeeec85abba: Download complete
+302e3ee49805: Verifying Checksum
+302e3ee49805: Download complete
+302e3ee49805: Pull complete
+4c0965d39195: Pull complete
+fdeeec85abba: Pull complete
+62a08b8dd4f5: Pull complete
+Digest: sha256:49f94609e5a997dc16086a66ac9664591854031d48e375945a9dbf4d1d53abbc
+Status: Downloaded newer image for python:3.9-slim
+ ---> 9d8cb7037cd8
+Step 2/6 : WORKDIR /app
+ ---> Running in ed54d546de22
+Removing intermediate container ed54d546de22
+ ---> cc57990e954b
+Step 3/6 : COPY . /app
+ ---> 08046b8458ce
+Step 4/6 : RUN pip install Flask
+ ---> Running in fc8197155911
+Collecting Flask
+  Downloading flask-3.0.3-py3-none-any.whl (101 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 101.7/101.7 kB 595.2 kB/s eta 0:00:00
+Collecting itsdangerous>=2.1.2
+  Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Collecting Werkzeug>=3.0.0
+  Downloading werkzeug-3.0.4-py3-none-any.whl (227 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 227.6/227.6 kB 1.6 MB/s eta 0:00:00
+Collecting importlib-metadata>=3.6.0
+  Downloading importlib_metadata-8.5.0-py3-none-any.whl (26 kB)
+Collecting Jinja2>=3.1.2
+  Downloading jinja2-3.1.4-py3-none-any.whl (133 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.3/133.3 kB 2.1 MB/s eta 0:00:00
+Collecting click>=8.1.3
+  Downloading click-8.1.7-py3-none-any.whl (97 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 97.9/97.9 kB 2.3 MB/s eta 0:00:00
+Collecting blinker>=1.6.2
+  Downloading blinker-1.8.2-py3-none-any.whl (9.5 kB)
+Collecting zipp>=3.20
+  Downloading zipp-3.20.2-py3-none-any.whl (9.2 kB)
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-3.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (20 kB)
+Installing collected packages: zipp, MarkupSafe, itsdangerous, click, blinker, Werkzeug, Jinja2, importlib-metadata, Flask
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0mSuccessfully installed Flask-3.0.3 Jinja2-3.1.4 MarkupSafe-3.0.1 Werkzeug-3.0.4 blinker-1.8.2 click-8.1.7 importlib-metadata-8.5.0 itsdangerous-2.2.0 zipp-3.20.2
+[91m
+[notice] A new release of pip is available: 23.0.1 -> 24.2
+[notice] To update, run: pip install --upgrade pip
+[0mRemoving intermediate container fc8197155911
+ ---> 11c8650b4f83
+Step 5/6 : EXPOSE 5000
+ ---> Running in 6b329403818b
+Removing intermediate container 6b329403818b
+ ---> 4b99b9270885
+Step 6/6 : CMD ["python", "hello_world.py"]
+ ---> Running in c68a84dba6f9
+Removing intermediate container c68a84dba6f9
+ ---> a74ce1805c23
+Successfully built a74ce1805c23
+Successfully tagged hello-world:latest
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (push image to ECR)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $AWS_SECRET_ACCESS_KEY
+[Pipeline] {
+[Pipeline] sh
++ + awsdocker ecr login get-login-password --username --region AWS us-east-1 --password-stdin
+ 047125666935.dkr.ecr.us-east-1.amazonaws.com
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker tag hello-world:latest 047125666935.dkr.ecr.us-east-1.amazonaws.com/default/hello-world:latest
++ docker push 047125666935.dkr.ecr.us-east-1.amazonaws.com/default/hello-world:latest
+The push refers to repository [047125666935.dkr.ecr.us-east-1.amazonaws.com/default/hello-world]
+fb89373bacd6: Preparing
+b0dcee32cb8a: Preparing
+7de162fa18c6: Preparing
+9e599118e168: Preparing
+e228adf1886f: Preparing
+fb5ccd0db472: Preparing
+8d853c8add5d: Preparing
+fb5ccd0db472: Waiting
+8d853c8add5d: Waiting
+e228adf1886f: Layer already exists
+9e599118e168: Layer already exists
+fb5ccd0db472: Layer already exists
+8d853c8add5d: Layer already exists
+7de162fa18c6: Pushed
+b0dcee32cb8a: Pushed
+fb89373bacd6: Pushed
+latest: digest: sha256:f3bd0b0d080319e6cb7de7bd86fd06bb977aa00dd84897ca8e0ea7bf58832ef2 size: 1786
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (install helm)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ helm upgrade hello-world-app ./hello-world-app
+false
+Release "hello-world-app" has been upgraded. Happy Helming!
+NAME: hello-world-app
+LAST DEPLOYED: Sat Oct 12 14:16:16 2024
+NAMESPACE: default
+STATUS: deployed
+REVISION: 2
+NOTES:
+1. Get the application URL by running these commands:
+  export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services hello-world-app)
+  export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo http://$NODE_IP:$NODE_PORT
+[Pipeline] sh
++ kubectl get --namespace default -o 'jsonpath={.spec.ports[0].nodePort}' services hello-world-app-service
++ NODE_PORT=32714
++ kubectl get nodes --namespace default -o 'jsonpath={.items[0].status.addresses[0].address}'
++ NODE_IP=192.168.49.2
++ echo http://192.168.49.2:32714
+http://192.168.49.2:32714
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // container
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // podTemplate
+[Pipeline] End of Pipeline
+Finished: SUCCESS
